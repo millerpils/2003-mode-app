@@ -1,0 +1,16 @@
+<%- include("partials/head") -%>
+<body>
+  <h1>Restaurants</h1>
+
+  <a href="/restaurants/new">Add new restaurant</a>
+
+  <% for (var i = 0; i < restaurants.length; i++) { %>
+  <h2><%= restaurants[i].name %></h2>
+  <p>
+    <%= restaurants[i].address %><br />
+    <%= restaurants[i].postcode %>
+  </p>
+  <% } %>
+</body>
+
+<%- include("partials/footer") -%>
