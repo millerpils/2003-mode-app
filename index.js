@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const ejs = require("ejs");
-const bodyParser = require("body-parser");
 const createRestaurantController = require("./controllers/createRestaurant");
 const readRestaurantController = require("./controllers/readRestaurant");
 const updateRestaurantController = require("./controllers/updateRestaurant");
@@ -20,6 +19,9 @@ app.use(
     extended: true,
   })
 );
+
+// serve static assets
+app.use(express.static("public"));
 
 // set view engine = ejs
 app.set("view engine", "ejs");

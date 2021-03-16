@@ -5,9 +5,8 @@ module.exports = (req, res, next) => {
 
   Restaurant.create(req.body, (error, document) => {
     if (error) {
-      console.log(error.message);
       // prints error on front end
-      next(error);
+      return next(error);
     }
 
     res.redirect("/");
