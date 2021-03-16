@@ -1,47 +1,45 @@
 <%- include("partials/head") -%>
-<body>
-  <%- include("partials/header") -%>
-  <div class="container">
-    <h1>Add new restaurant</h1>
+<%- include("partials/header") -%>
+<div class="container">
+  <h1>Add new restaurant</h1>
 
-    <form
-      action="/restaurants"
-      method="post"
-      enctype="application/x-www-form-urlencoded"
-    >
-      <div class="control-group">
-        <div class="form-group">
-          <label>Name</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Name"
-            id="name"
-            name="name"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label>Address</label>
-          <textarea class="form-control" id="address" name="address" required>
-          </textarea>
-        </div>
-        <div class="form-group">
-          <label>Postcode</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Postcode"
-            id="postcode"
-            name="postcode"
-            required
-          />
-        </div>
+  <form
+    action="/restaurants"
+    method="post"
+    enctype="application/x-www-form-urlencoded"
+  >
+    <div class="control-group">
+      <div class="form-group">
+        <label>Name</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Name"
+          id="name"
+          name="name"
+          required
+        />
       </div>
+      <div class="form-group">
+        <label>Address</label>
+        <textarea class="form-control" id="address" name="address" required>
+        </textarea>
+      </div>
+      <div class="form-group">
+        <label>Postcode</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Postcode"
+          id="postcode"
+          name="postcode"
+          required
+        />
+      </div>
+    </div>
 
-      <button type="submit" class="btn btn-primary">Create</button>
-    </form>
-  </div>
-</body>
+    <button type="submit" class="btn btn-primary">Create</button>
+  </form>
+</div>
 
 <%- include("partials/footer") -%>

@@ -43,7 +43,7 @@ mongoose.connect(
 app.post("/restaurants", createRestaurantController);
 
 // read restaurant
-app.get("/restaurants", readRestaurantController);
+app.get("/restaurants/:id", readRestaurantController);
 
 // update restaurant
 app.put("/restaurants", updateRestaurantController);

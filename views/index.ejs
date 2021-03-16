@@ -1,23 +1,22 @@
 <%- include("partials/head") -%>
-<body>
-  <%- include("partials/header") -%>
-  <div class="container">
-    <h1>Restaurants</h1>
+<%- include("partials/header") -%>
+<div class="container">
+  <h1>Restaurants</h1>
 
-    <a href="/restaurants/new">Add new restaurant</a>
+  <a href="/restaurants/new">Add new restaurant</a>
 
-    <div class="row row__restaurants">
-      <% for (var i = 0; i < restaurants.length; i++) { %>
-        <div class="col-md-3">
-          <h2><%= restaurants[i].name %></h2>
-          <p>
-            <%= restaurants[i].address %><br />
-            <%= restaurants[i].postcode %>
-          </p>
-        </div>
-      <% } %>
-    </div>
+  <div class="row row__restaurants">
+    <% for (var i = 0; i < restaurants.length; i++) { %>
+      <div class="col-md-3">
+        <h2><%= restaurants[i].name %></h2>
+        <p>
+          <%= restaurants[i].address %><br />
+          <%= restaurants[i].postcode %>
+        </p>
+        <a href="/restaurants/<%= restaurants[i]._id %>">View restaurant</a>
+      </div>
+    <% } %>
   </div>
-</body>
+</div>
 
 <%- include("partials/footer") -%>
