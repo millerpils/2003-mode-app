@@ -10,9 +10,6 @@ const homeController = require("./controllers/home");
 // launch express server
 const app = new express();
 
-// // to parse json bodies
-// app.use(express.json());
-
 // pass form encoded bodies
 app.use(
   express.urlencoded({
