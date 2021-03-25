@@ -1,19 +1,18 @@
-<%- include("partials/head") -%>
-<%- include("partials/header") -%>
+<%- include("partials/head") -%> <%- include("partials/header") -%>
 
-<div class="container">
-    <a href="/">Go back</a>
+<div class="container container--main">
+  <a href="/">Go back</a>
 
-    <h1><%= restaurant.name %></h1>
+  <h1><%= restaurant.name %></h1>
 
-    <div class="row row__restaurants">
-        <div class="col-md-3">
-        <p>
-            <%= restaurant.address %><br />
-            <%= restaurant.postcode %>
-        </p>
-        </div>
+  <div class="row row--restaurants">
+    <div class="col-md-3">
+      <p>
+        <%= restaurant.address %><br />
+        <%= restaurant.postcode %>
+      </p>
     </div>
+  </div>
 </div>
 
 <%- include("partials/footer") -%>

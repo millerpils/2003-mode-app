@@ -52,7 +52,7 @@ app.delete("/restaurants", deleteRestaurantController);
 app.get("/", homeController);
 
 // new resto form
-app.get("/restaurants/new", (req, res) => {
+app.get("/restaurants-manager/new", (req, res) => {
   res.render("newRestaurant");
 });
 

@@ -1,24 +1,24 @@
-.container {
-    margin-top: 2rem;
-}
-
 header {
-    color: white;
-    background-color: maroon;
-    min-height: 5rem;
-    padding: 0 1rem;
-    display: flex;
-    align-items: center;
+  color: white;
+  background-color: maroon;
+  min-height: 5rem;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
 }
 
 footer {
-    margin-top: 5rem;
-    padding: 1rem 0;
-    min-height: 5rem;
-    color: white;
-    background-color: maroon;
+  margin-top: 5rem;
+  padding: 1rem 0;
+  min-height: 15rem;
+  color: white;
+  background-color: maroon;
 }
 
-.row__restaurants {
-    margin-top: 1rem;
+.row--restaurants {
+  margin-top: 1rem;
+}
+
+.container--main {
+  margin-top: 2rem;
 }
