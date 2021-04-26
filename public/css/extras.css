@@ -15,7 +15,11 @@ footer {
   background-color: maroon;
 }
 
-.row--restaurants {
+form {
+  max-width: 40rem;
+}
+
+.row--restaurants .col-md-3 {
   margin-top: 1rem;
 }
 

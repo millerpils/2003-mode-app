@@ -1,14 +1,15 @@
 const Restaurant = require("../models/Restaurant");
 
-module.exports = (req, res) => {
+module.exports = (req, res, next) => {
   Restaurant.findOneAndUpdate(
     { title: req.body.title },
     req.body,
-    {
-      returnNewDocument: true,
-    },
     (error, document) => {
-      console.log(document);
+      if (error) {
+        return next(error);
+      }
+
+      res.redirect("/");
     }
   );
 };
