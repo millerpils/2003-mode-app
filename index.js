@@ -1,14 +1,12 @@
 const mongoose = require("mongoose");
-const express = require("express");
 const ejs = require("ejs");
-const createRestaurantController = require("./controllers/createRestaurant");
-const readRestaurantController = require("./controllers/readRestaurant");
-const updateRestaurantController = require("./controllers/updateRestaurant");
-const deleteRestaurantController = require("./controllers/updateRestaurant");
-const homeController = require("./controllers/home");
-
-// launch express server
-const app = new express();
+const routes = require("./routes/routes");
+const express = require("express");
+const app = express();
+const session = require("express-session");
+const passport = require("passport");
+const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
+const config = require("./config/config");
 
 // pass form encoded bodies
 app.use(
@@ -36,27 +34,51 @@ mongoose.connect(
   }
 );
 
-// create restaurant
-app.post("/restaurants", createRestaurantController);
+// init express session
+app.use(
+  session({
+    resave: false,
+    saveUninitialized: true,
+    secret: "SECRET123!",
+  })
+);
 
-// read restaurant
-app.get("/restaurants/:id", readRestaurantController);
+// init passport and passport session
+app.use(passport.initialize());
+app.use(passport.session());
 
-// update restaurant
-app.put("/restaurants", updateRestaurantController);
-
-// delete restaurant
-app.delete("/restaurants", deleteRestaurantController);
-
-// home controller
-app.get("/", homeController);
-
-// new resto form
-app.get("/restaurants-manager/new", (req, res) => {
-  res.render("newRestaurant");
+// saves user info to session
+passport.serializeUser(function (user, cb) {
+  cb(null, user);
 });
 
-// listen on port 3001
-app.listen(3001, () => {
-  console.log("Server running on 3001");
+// fetches user info from session
+passport.deserializeUser(function (obj, cb) {
+  cb(null, obj);
+});
+
+// init passport strategy using config deets
+passport.use(
+  new LinkedInStrategy(
+    {
+      clientID: config.linkedinAuth.clientID,
+      clientSecret: config.linkedinAuth.clientSecret,
+      callbackURL: config.linkedinAuth.callbackURL,
+      scope: ["r_emailaddress", "r_liteprofile"],
+    },
+    function (token, tokenSecret, profile, done) {
+      console.log(token);
+      return done(null, profile);
+    }
+  )
+);
+
+// use routes file for all routes
+app.use("/", routes);
+
+const port = 3000;
+
+// listen on port
+app.listen(port, () => {
+  console.log(`Server running on ${port}`);
 });

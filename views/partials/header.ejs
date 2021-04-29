@@ -1,6 +1,12 @@
 <body>
-    <header>
-        <div class="container">
-            Restaurants
-        </div>
-    </header>
+  <header>
+    <div class="container">
+      <div>Restaurants</div>
+
+      <a href="/auth/linkedin">
+        <% if ( user ) { %> Welcome, <%= user.displayName %> <% } else { %>
+        Login <% } %>
+      </a>
+    </div>
+  </header>
+</body>
