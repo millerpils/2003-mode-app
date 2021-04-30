@@ -2,11 +2,13 @@
   <header>
     <div class="container">
       <div>Restaurants</div>
-
-      <a href="/auth/linkedin">
-        <% if ( user ) { %> Welcome, <%= user.displayName %> <% } else { %>
-        Login <% } %>
-      </a>
+      <div class="header__account">
+        <% if ( user.displayName ) { %> Welcome, <%= user.displayName %> |
+        <a href="/auth/logout"> Logout </a>
+        <% } else { %>
+        <a href="/auth/linkedin"> Login </a>
+        <% } %>
+      </div>
     </div>
   </header>
 </body>

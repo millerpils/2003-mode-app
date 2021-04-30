@@ -6,8 +6,6 @@ module.exports = (req, res, next) => {
       return next(error);
     }
 
-    console.log(req.user);
-
     res.render("restaurants", { user: req.user, restaurants: restaurants });
   });
 };

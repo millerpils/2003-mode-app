@@ -7,6 +7,7 @@ const session = require("express-session");
 const passport = require("passport");
 const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
 const config = require("./config/config");
+const port = 3000;
 
 // pass form encoded bodies
 app.use(
@@ -67,7 +68,6 @@ passport.use(
       scope: ["r_emailaddress", "r_liteprofile"],
     },
     function (token, tokenSecret, profile, done) {
-      console.log(token);
       return done(null, profile);
     }
   )
@@ -75,8 +75,6 @@ passport.use(
 
 // use routes file for all routes
 app.use("/", routes);
-
-const port = 3000;
 
 // listen on port
 app.listen(port, () => {

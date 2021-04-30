@@ -2,8 +2,10 @@ const createRestaurantController = require("../controllers/createRestaurant");
 const readRestaurantController = require("../controllers/readRestaurant");
 const updateRestaurantController = require("../controllers/updateRestaurant");
 const deleteRestaurantController = require("../controllers/updateRestaurant");
-const isLoggedIn = require("../middleware/isLoggedIn");
+const homeController = require("../controllers/homeController");
+const logoutController = require("../controllers/logout");
 const restaurantsController = require("../controllers/restaurantsController");
+const isLoggedIn = require("../middleware/isLoggedIn");
 const passport = require("passport");
 const express = require("express");
 const router = express.Router();
@@ -20,23 +22,26 @@ router.get(
   })
 );
 
+// logout
+router.get("/auth/logout", logoutController);
+
 // create restaurant
-router.post("/restaurants", createRestaurantController);
+router.post("/restaurants", isLoggedIn, createRestaurantController);
 
 // read restaurant
-router.get("/restaurants/:id", readRestaurantController);
+router.get("/restaurants/:id", isLoggedIn, readRestaurantController);
 
 // update restaurant
-router.put("/restaurants", updateRestaurantController);
+router.put("/restaurants/:id", isLoggedIn, updateRestaurantController);
 
 // delete restaurant
-router.delete("/restaurants", deleteRestaurantController);
+router.delete("/restaurants/:id", isLoggedIn, deleteRestaurantController);
 
 // all restaurants controller
-router.get("/restaurants", restaurantsController);
+router.get("/restaurants", isLoggedIn, restaurantsController);
 
 // all restaurants controller
-router.get("/", isLoggedIn);
+router.get("/", isLoggedIn, homeController);
 
 // new resto form
 router.get("/restaurants-manager/new", (req, res) => {
