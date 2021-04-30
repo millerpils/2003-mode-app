@@ -41,11 +41,11 @@ router.delete("/restaurants/:id", isLoggedIn, deleteRestaurantController);
 router.get("/restaurants", isLoggedIn, restaurantsController);
 
 // all restaurants controller
-router.get("/", isLoggedIn, homeController);
+router.get("/", homeController);
 
 // new resto form
-router.get("/restaurants-manager/new", (req, res) => {
-  res.render("newRestaurant");
+router.get("/restaurants-manager/new", isLoggedIn, (req, res) => {
+  res.render("newRestaurant", { user: req.user });
 });
 
 module.exports = router;

@@ -1,3 +1,7 @@
 module.exports = (req, res) => {
-  res.render("home", { user: req.user });
+  if (!req.isAuthenticated()) {
+    return res.render("home", { user: {} });
+  }
+
+  res.redirect("/restaurants");
 };
