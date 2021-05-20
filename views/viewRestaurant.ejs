@@ -3,13 +3,13 @@
 <div class="container container--main">
   <a href="/restaurants">Go back</a>
 
-  <h1><%= restaurant.name %></h1>
+  <h1><%= restaurant[0].name %></h1>
 
   <div class="row row--restaurants">
     <div class="col-md-3">
       <p>
-        <%= restaurant.address %><br />
-        <%= restaurant.postcode %>
+        <%= restaurant[0].address %><br />
+        <%= restaurant[0].postcode %>
       </p>
     </div>
   </div>

@@ -1,11 +1,14 @@
-const Restaurant = require("../models/Restaurant");
+const getRestaurants = require("../services/getRestaurants");
 
 module.exports = (req, res, next) => {
-  Restaurant.findOne({ _id: req.params.id }, (error, restaurant) => {
-    if (error) {
+  getRestaurants({ _id: req.params.id })
+    .then((restaurant) => {
+      res.render("viewRestaurant", {
+        user: req.user,
+        restaurant: restaurant,
+      });
+    })
+    .catch((error) => {
       return next(error);
-    }
-
-    res.render("viewRestaurant", { user: req.user, restaurant: restaurant });
-  });
+    });
 };

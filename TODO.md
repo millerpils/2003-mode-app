@@ -1,3 +1,3 @@
-- Test login flow with cypress - PARTIALLY DONE
-- Seed data into mongo and find a way to test
+- Test login flow with cypress - PARTIALLY DONE - difficult with Passport
+- Seed data into mongo and find a way to test - see Pluralsight course
 - Set up routes /auth /restaurants etc - DONE
