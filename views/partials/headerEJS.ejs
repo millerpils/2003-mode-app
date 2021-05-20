@@ -1,0 +1,14 @@
+<body>
+  <header>
+    <div class="container">
+      <div>Restaurants</div>
+      <div class="header__account">
+        <% if ( user.displayName ) { %> Welcome, <%= user.displayName %> |
+        <a href="/auth/logout"> Logout </a>
+        <% } else { %>
+        <a href="/auth/linkedin"> Login </a>
+        <% } %>
+      </div>
+    </div>
+  </header>
+</body>
