@@ -1,0 +1,3 @@
+- Test login flow with cypress
+- Seed data into mongo and find a way to test
+- Set up routes /auth /restaurants etc
