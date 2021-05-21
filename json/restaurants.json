@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Pizza Hut",
+    "address": "1 Pizza Lane ",
+    "postcode": "PZ1 1LZ"
+  },
+  {
+    "name": "Kebab Haus",
+    "address": "1 Kebab Haus Lane",
+    "postcode": "KB1 1BB"
+  }
+]

@@ -1,12 +1,10 @@
 beforeEach(() => {
-  cy.clearCookies();
+  // visit home page
+  cy.visit("/");
 });
 
 describe("Login with LinkedIn", () => {
-  it("should login via linkedin a redirect to /restaurants page", () => {
-    // visit home page
-    cy.visit("/");
-
+  it.skip("should login via linkedin a redirect to /restaurants page", () => {
     // get login link and click it
     cy.get(".container--main a[href='/auth/linkedin']").click();
 
@@ -21,7 +19,7 @@ describe("Login with LinkedIn", () => {
     // click signin button
     cy.get(".login__form_action_container button").contains("Sign in").click();
 
-    // redirect back to restaurants
+    // redirects back to restaurants
     cy.url().should("include", "/restaurants");
   });
 

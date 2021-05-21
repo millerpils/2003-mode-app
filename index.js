@@ -48,34 +48,35 @@ app.use(
 );
 
 // init passport and passport session
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
-// // saves user info to session
-// passport.serializeUser(function (user, cb) {
-//   cb(null, user);
-// });
+// saves user info to session
+passport.serializeUser(function (user, cb) {
+  cb(null, user);
+});
 
-// // fetches user info from session
-// passport.deserializeUser(function (obj, cb) {
-//   cb(null, obj);
-// });
+// fetches user info from session
+passport.deserializeUser(function (obj, cb) {
+  cb(null, obj);
+});
 
-// // init passport strategy using config deets
-// passport.use(
-//   new LinkedInStrategy(
-//     {
-//       clientID: config.linkedinAuth.clientID,
-//       clientSecret: config.linkedinAuth.clientSecret,
-//       callbackURL: config.linkedinAuth.callbackURL,
-//       scope: ["r_emailaddress", "r_liteprofile"],
-//     },
-//     function (token, tokenSecret, profile, done) {
-//       return done(null, profile);
-//     }
-//   )
-// );
+// init passport strategy using config deets
+passport.use(
+  new LinkedInStrategy(
+    {
+      clientID: config.linkedinAuth.clientID,
+      clientSecret: config.linkedinAuth.clientSecret,
+      callbackURL: config.linkedinAuth.callbackURL,
+      scope: ["r_emailaddress", "r_liteprofile"],
+    },
+    function (token, tokenSecret, profile, done) {
+      return done(null, profile);
+    }
+  )
+);
 
+// restaurant manager routes
 app.use("/restaurants-manager", restaurants_manager);
 
 // restaurant routes
