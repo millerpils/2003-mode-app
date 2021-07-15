@@ -1,25 +1,32 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const createRestaurantController = require("../controllers/createRestaurant");
-const readRestaurantController = require("../controllers/readRestaurant");
-const updateRestaurantController = require("../controllers/updateRestaurant");
-const deleteRestaurantController = require("../controllers/updateRestaurant");
-const restaurantsController = require("../controllers/restaurantsController");
-const isLoggedIn = require("../middleware/isLoggedIn");
+const restaurantsController = require('../controllers/restaurantsController');
+const isLoggedIn = require('../middleware/isLoggedIn');
 
-// create restaurant
-router.post("/", isLoggedIn, createRestaurantController);
+// CREATE
+router.post('/', isLoggedIn, (req, res, next) => {
+  console.log(req.body);
+  restaurantsController.post(req, res, next);
+});
 
-// read restaurant
-router.get("/:id", isLoggedIn, readRestaurantController);
+// READ ALL
+router.get('/', isLoggedIn, (req, res, next) => {
+  restaurantsController.get(req, res, next);
+});
 
-// update restaurant
-router.put("/:id", isLoggedIn, updateRestaurantController);
+// READ ONE
+router.get('/:id', isLoggedIn, (req, res, next) => {
+  restaurantsController.get(req, res, next);
+});
 
-// delete restaurant
-router.delete("/:id", isLoggedIn, deleteRestaurantController);
+// UPDATE
+router.put('/:id', isLoggedIn, (req, res, next) => {
+  restaurantsController.put(req, res, next);
+});
 
-// all restaurants controller
-router.get("/", isLoggedIn, restaurantsController);
+// DELETE
+router.delete('/:id', isLoggedIn, (req, res, next) => {
+  // needs writing
+});
 
 module.exports = router;

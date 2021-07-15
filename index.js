@@ -1,15 +1,15 @@
-const mongoose = require("mongoose");
-const ejs = require("ejs");
-const restaurants = require("./routes/restaurants");
-const restaurants_manager = require("./routes/restaurants-manager");
-const auth = require("./routes/auth");
-const express = require("express");
+const mongoose = require('mongoose');
+const ejs = require('ejs');
+const restaurants = require('./routes/restaurants');
+const restaurants_manager = require('./routes/restaurants-manager');
+const auth = require('./routes/auth');
+const express = require('express');
 const app = express();
-const session = require("express-session");
-const homeController = require("./controllers/homeController");
-const passport = require("passport");
-const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
-const config = require("./config/config");
+const session = require('express-session');
+const homeController = require('./controllers/homeController');
+const passport = require('passport');
+const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+const config = require('./config/config');
 const port = 3000;
 
 // pass form encoded bodies
@@ -19,22 +19,24 @@ app.use(
   })
 );
 
+app.use(express.json());
+
 // serve static assets
-app.use(express.static("public"));
+app.use(express.static('public'));
 
 // set view engine = ejs
-app.set("view engine", "ejs");
+app.set('view engine', 'ejs');
 
 // connect to mongo
 mongoose.connect(
-  "mongodb://localhost/2003-database",
+  'mongodb://localhost/2003-database',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
   },
   () => {
-    console.log("Connected to MongoDB");
+    console.log('Connected to MongoDB');
   }
 );
 
@@ -43,7 +45,7 @@ app.use(
   session({
     resave: false,
     saveUninitialized: true,
-    secret: "SECRET123!",
+    secret: 'SECRET123!',
   })
 );
 
@@ -68,7 +70,7 @@ passport.use(
       clientID: config.linkedinAuth.clientID,
       clientSecret: config.linkedinAuth.clientSecret,
       callbackURL: config.linkedinAuth.callbackURL,
-      scope: ["r_emailaddress", "r_liteprofile"],
+      scope: ['r_emailaddress', 'r_liteprofile'],
     },
     function (token, tokenSecret, profile, done) {
       return done(null, profile);
@@ -77,16 +79,16 @@ passport.use(
 );
 
 // restaurant manager routes
-app.use("/restaurants-manager", restaurants_manager);
+app.use('/restaurants-manager', restaurants_manager);
 
 // restaurant routes
-app.use("/restaurants", restaurants);
+app.use('/restaurants', restaurants);
 
 // auth routes
-app.use("/auth", auth);
+app.use('/auth', auth);
 
 // home controller
-app.get("/", homeController);
+app.get('/', homeController);
 
 // listen on port
 app.listen(port, () => {
